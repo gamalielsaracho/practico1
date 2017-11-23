@@ -19,6 +19,7 @@ import practico.modelo.Movimiento;
 public class FormularioMovimiento extends javax.swing.JFrame {
     private MovimientoDAO daoMovimiento;
     
+    
     /**
      * Creates new form FormularioMovimiento
      */
@@ -45,6 +46,7 @@ public class FormularioMovimiento extends javax.swing.JFrame {
        }
      }
 
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -248,12 +250,16 @@ public class FormularioMovimiento extends javax.swing.JFrame {
         listarMovimientosPorIdCuentaEnTabla(cuentaId);
         
         
+        
         // LIMPIANDO EL FORMULARIO.
         int fila=tablaMovimiento.getSelectedRow();
        
         movimientoIdInput.setText("");
         montoInput.setText("");
         tiposCombo.setSelectedItem("Debe");
+        
+        
+        
     }//GEN-LAST:event_agregarActionPerformed
 
     private void editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarActionPerformed

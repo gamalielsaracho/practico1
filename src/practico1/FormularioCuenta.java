@@ -657,6 +657,6 @@ public class FormularioCuenta extends javax.swing.JFrame {
     private javax.swing.JTextField sobreHabilitadoInput;
     private javax.swing.JTable tablaBanco;
     private javax.swing.JTable tablaCliente;
-    private javax.swing.JTable tablaCuenta;
+    public javax.swing.JTable tablaCuenta;
     // End of variables declaration//GEN-END:variables
 }
