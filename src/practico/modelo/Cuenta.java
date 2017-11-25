@@ -7,6 +7,8 @@
 package practico.modelo;
 
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 
@@ -27,6 +29,8 @@ public class Cuenta {
     int edad;
     
     String nombreBanco;
+    
+    List<Movimiento> movimientos = new ArrayList<>();
 
     public Integer getId_cuenta() {
         return id_cuenta;

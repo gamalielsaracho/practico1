@@ -7,12 +7,26 @@
 package practico1;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.swing.JRViewer;
 import practico.conexion.Conexion;
 import practico.dao.BancoDAO;
 import practico.dao.ClienteDAO;
@@ -277,7 +291,7 @@ public class FormularioCuenta extends javax.swing.JFrame {
         tablaCliente = new javax.swing.JTable();
         jScrollPane3 = new javax.swing.JScrollPane();
         tablaBanco = new javax.swing.JTable();
-        mostrarMovimientos = new javax.swing.JButton();
+        reporte = new javax.swing.JButton();
         idCuentaInput = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -361,10 +375,10 @@ public class FormularioCuenta extends javax.swing.JFrame {
         ));
         jScrollPane3.setViewportView(tablaBanco);
 
-        mostrarMovimientos.setText("Mostrar movimientos");
-        mostrarMovimientos.addActionListener(new java.awt.event.ActionListener() {
+        reporte.setText("Reporte");
+        reporte.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mostrarMovimientosActionPerformed(evt);
+                reporteActionPerformed(evt);
             }
         });
 
@@ -378,7 +392,6 @@ public class FormularioCuenta extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(idCuentaInput, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(idClienteInput, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -404,7 +417,7 @@ public class FormularioCuenta extends javax.swing.JFrame {
                                 .addGap(286, 286, 286)
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(mostrarMovimientos))
+                                .addComponent(reporte))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addGroup(layout.createSequentialGroup()
@@ -462,7 +475,7 @@ public class FormularioCuenta extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(editar)
                     .addComponent(jLabel4)
-                    .addComponent(mostrarMovimientos))
+                    .addComponent(reporte))
                 .addGap(33, 33, 33)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(86, Short.MAX_VALUE))
@@ -559,14 +572,33 @@ public class FormularioCuenta extends javax.swing.JFrame {
         sobreHabilitadoInput.setText("");
     }//GEN-LAST:event_limpiarActionPerformed
 
-    private void mostrarMovimientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarMovimientosActionPerformed
+    private void reporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reporteActionPerformed
         // TODO add your handling code here:
         
+          Connection connection;
+         connection = Conexion.getConnection();
+
+               
+           
+        
+        try {
+
+            JasperReport report = (JasperReport) JRLoader.loadObject("D:\\Usuario\\Desktop\\listaGrupoCuentas.jasper");
+            JasperPrint jasperPrint = JasperFillManager.fillReport(report, null, connection);
+
+            JFrame frame = new JFrame("Report");
+            frame.getContentPane().add(new JRViewer(jasperPrint));
+            frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+            frame.pack();
+            frame.setVisible(true);
+
+        } catch (JRException e) {
+            e.printStackTrace();
+        }
+
       
-      
-         //Movimiento  oMovimiento = new Movimiento();
-        //oMovimiento.show();
-    }//GEN-LAST:event_mostrarMovimientosActionPerformed
+     
+    }//GEN-LAST:event_reporteActionPerformed
 
     private void tablaCuentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaCuentaMouseClicked
         // TODO add your handling code here:
@@ -653,7 +685,7 @@ public class FormularioCuenta extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JButton limpiar;
-    private javax.swing.JButton mostrarMovimientos;
+    private javax.swing.JButton reporte;
     private javax.swing.JTextField sobreHabilitadoInput;
     private javax.swing.JTable tablaBanco;
     private javax.swing.JTable tablaCliente;
