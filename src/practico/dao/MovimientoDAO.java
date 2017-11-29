@@ -58,15 +58,13 @@ public class MovimientoDAO {
     public String agregarMovimiento(Movimiento movimiento) {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("insert into movimientos("
-                    + "id_movimiento, fechaMovimiento, monto, tipo, id_cuenta, id_banco, id_cliente) "
-                    + "values (null, now(), ?, ?, ?, ?, ?)");
+                    + "id_movimiento, fechaMovimiento, monto, tipo, id_cuenta) "
+                    + "values (null, now(), ?, ?, ?)");
 
             preparedStatement.setInt(1, movimiento.getMonto());
             preparedStatement.setString(2, movimiento.getTipo());
             
             preparedStatement.setInt(3, movimiento.getId_cuenta());
-            preparedStatement.setInt(4, movimiento.getId_banco());
-            preparedStatement.setInt(5, movimiento.getId_cliente());
 
             preparedStatement.executeUpdate();
             return "AGREGADO";

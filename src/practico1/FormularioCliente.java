@@ -68,7 +68,7 @@ public class FormularioCliente extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         idCliente = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("Ingresar Datos:");
 
@@ -166,8 +166,7 @@ public class FormularioCliente extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(editar)
                         .addGap(27, 27, 27)
-                        .addComponent(eliminar)
-                        .addGap(6, 6, 6)))
+                        .addComponent(eliminar)))
                 .addGap(82, 82, 82))
         );
         layout.setVerticalGroup(

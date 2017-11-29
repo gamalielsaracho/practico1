@@ -73,7 +73,7 @@ public class CuentaDAO {
     }
     
     
-    public void eliminarCuenta(String idBanco , String idCliente ){
+    /* public void eliminarCuenta(String idBanco , String idCliente ){
         try {
             PreparedStatement ps = connection.prepareStatement("delete from cuentas where id_banco = ? AND id_cliente = ?");
             
@@ -85,7 +85,7 @@ public class CuentaDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-    }
+    } */
     
     
     public String actualizarCuenta(Cuenta cuenta){
@@ -124,10 +124,10 @@ public class CuentaDAO {
                 
                 
                 cuenta.setId_cuenta(rs.getInt("cu.id_cuenta"));
-                cuenta.setId_banco(rs.getInt("cu.id_banco"));
+                // cuenta.setId_banco(rs.getInt("cu.id_banco"));
                 cuenta.setNombreBanco(rs.getString("b.nombre"));
                 
-                cuenta.setId_cliente(rs.getInt("cu.id_cliente"));
+                //cuenta.setId_cliente(rs.getInt("cu.id_cliente"));
                 cuenta.setNombreCliente(rs.getString("cli.nombre"));
                 cuenta.setApellidoCliente(rs.getString("cli.apellido"));
                 

@@ -15,12 +15,10 @@ import java.sql.Date;
 
 public class Movimiento {
     int id_movimiento;
-    int id_cuenta;
-    int id_banco;
-    int id_cliente;         
+    int id_cuenta;       
     Date fechaMovimiento;
     int monto;
-    String tipo; 
+    String tipo;
 
     public int getId_movimiento() {
         return id_movimiento;
@@ -36,22 +34,6 @@ public class Movimiento {
 
     public void setId_cuenta(int id_cuenta) {
         this.id_cuenta = id_cuenta;
-    }
-
-    public int getId_banco() {
-        return id_banco;
-    }
-
-    public void setId_banco(int id_banco) {
-        this.id_banco = id_banco;
-    }
-
-    public int getId_cliente() {
-        return id_cliente;
-    }
-
-    public void setId_cliente(int id_cliente) {
-        this.id_cliente = id_cliente;
     }
 
     public Date getFechaMovimiento() {
@@ -77,5 +59,7 @@ public class Movimiento {
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
+
+    
     
 }
